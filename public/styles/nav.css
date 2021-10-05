@@ -1,0 +1,106 @@
+
+.nav {
+  font-family: 'Bungee', cursive;
+  background-color: #043052;
+   
+  display: flex;
+  
+  min-height: 120px;
+  font-size: 40px;
+  color: white;
+  z-index: 100;
+   
+}
+ 
+.logo {
+  flex: 1;
+  font-size: 50px;
+  display: flex;
+         /* top right  bottom  left*/
+  margin:    0   0     10px    1.5em;
+  color: white;
+  justify-content: start;
+  align-items: end
+
+}
+
+.icon {
+  color: #68b1e9;
+  margin: 0px 0px 45px 0px;
+}
+
+
+.navbar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;         /*Top to Bottom*/
+  color: white;
+  justify-content: center;
+  align-items: end;  
+        /* top right  bottom  left*/  
+  margin: 0px 1.5em  0px    0px;
+  
+}
+
+.box {
+ flex: 1;
+ display:flex;
+ flex-direction: column;         /*Top to Bottom*/
+ align-items: center;            /*Items align at the vertical center of the container.*/
+ justify-content: center;
+
+      /* top right  bottom  left*/  
+ margin: 20px  0   0    0;
+ 
+ font-family: 'Source Sans Pro', sans-serif;
+ font-weight: 600;
+ font-size: 30px;
+ font-style: bold;
+       
+ color: white;
+}
+
+
+
+#write{
+/* flex:1; */
+  font-size: 30px;
+  /* font-weight: 600; */
+  font-family: 'Source Sans Pro', sans-serif;
+  /* top right  bottom  left*/
+    /* margin: 0px 0px 30px 00px; */
+}.span{
+  font-size: 30px;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  /* top right  bottom  left*/
+    /* margin: 0px 0px 30px 00px; */
+}
+
+
+ul li {
+  list-style: none;
+  position: relative;
+}
+.fa.icone {
+  flex:1;
+  font-size: 30px;
+  color: #68b1e9;
+  opacity: 0.2;
+  /*ease, ease-out, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) (e.g. cubic-bezier(0.5, 0.2, 0.3, 1.0))*/
+  animation: anima 1.5s ease-out infinite;
+  position: absolute;
+  left: -1.5rem;
+  top: -1.5rem;
+}
+@keyframes anima {
+  to {
+      opacity: 1;
+      top: -0.5rem;
+  }
+}
+
+
+
+
+

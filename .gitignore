@@ -1,3 +1,6 @@
 node_modules/
 .env
 .DS_Store
+public/02.css
+public/jquery.html
+public/jquery.js

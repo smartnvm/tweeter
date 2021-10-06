@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/newTweet.css" type="text/css" />
 
 
   <!-- External JS -->
@@ -25,62 +26,27 @@
   <!-- App Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
     rel="stylesheet">
 
-
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" /> -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
 </head>
-
-
-<!-- 
-<header>
-  <div class="box a">A</div>
-</header> -->
-
-<!-- 
-!-- B, C, D, E and F --
-<div class="container">
-
-  !-- 
-  <div class='pac'> master box B C D E
-    <div class="box b">B </div>
-    <div class='cent50'>
-      <div class="box c">C</div>
-      <div class="box d">D</div>
-      <div class="box e">E</div>
-    </div>
-  </div> !-- master box B C D E--
-
-  <div class="box f">F</div>
-
-</div> !-- B, C, D, E and F -->
-
-<!-- <footer>
-  <div class="box g">G</div>
-</footer>
- -->
 
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <nav class="nav">
-
+  <nav class="navbar">
     <div class="logo">
       tweeter
       <!-- <i class="icon fas fa-dove fa-xs fa-flip-horizontal"></i> -->
       <i class="icon fas fa-dove  fa-xs "></i>
     </div>
 
-
-    <div class="navbar">
+    <div class="nav">
       <div class="box">
         <div> Write <span class="span"> a new tweet </span></div>
         <ul>
@@ -92,19 +58,63 @@
   </nav>
 
 
-  <header class="avatar">
-    <div>
-      <img src="/images/profile-hex.png">
-    </div>
-    <div>
+  <header class="">
+    <header class="avatar">
+      <!-- <img src="/images/purty-wood.png"> -->
+      <div><img src="/images/profile-hex.png"></div>
+      <!-- <div> -->
+
       <h2>AJ</h2>
-    </div>
+      <!-- </div> -->
+    </header>
+
   </header>
 
-
-
   <!-- Page-specific (main) content here -->
-  <main class="container"></main>
+  <main class="container">
+    <section class="new-tweet">
+      <form action="/tweets" method="post">
+        <textarea name="text" id="tweeter-text" maxlength="140" placeholder="What are you humming about?"></textarea>
+        <div class="form-ui">
+          <button class="tweet-button" type="submit">Tweet</button>
+          <output name="counter" id="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+    </section>
+
+
+  </main>
+  <div class="avatar ">
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+    What are you humming about? <br>
+
+    <div>
 </body>
+
+<!-- reference jQuery CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- main client.js scriptfile   -->
+<script src="./scripts/client.js"></script>
+
 
 </html>

@@ -4,3 +4,5 @@ node_modules/
 public/02.css
 public/jquery.html
 public/jquery.js
+public/images/purty-wood.png
+.gitignore

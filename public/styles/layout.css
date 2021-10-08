@@ -27,14 +27,29 @@ body {
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  word-wrap: break-word;
 }
 
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-  
+  align-items: center;
   width: 100%;
   height: 100%;  
   }
+
+
+/* Responsive design for desktops */
+@media (min-width: 1024px) {
+  
+  .container {
+    width: 65vw;
+    /* height: 50vw; */
+    float: right;
+    margin-top: 120px;
+  }
+
+
+}   

@@ -15,9 +15,7 @@
 }
 
 .header {
-  /* background-color:white; */
   background-color: #000000;
-  /* background-color: #043052; */
   background-image: url("../images/gplay.png");  
 }
 .username {
@@ -30,8 +28,7 @@
   flex: 1;
   font-size: 50px;
   display: flex;
-         /* top right  bottom  left*/
-  margin:    0   0     10px    1.5em;
+  margin:    0   0  10px 1.5em;
   color: white;
   justify-content: start;
   align-items: end
@@ -53,11 +50,10 @@
 .nav {
   display: flex;
   
-  flex-direction: column;         /*Top to Bottom*/
+  flex-direction: column;
   color: white;
   justify-content: flex-end;
-  align-items: center;  
-        /* top right  bottom  left*/  
+  align-items: center;
   margin: 0px 1.5em  0px    0px;
   
 }
@@ -65,11 +61,11 @@
 .box {
   
   display:flex;
-  flex-direction: column;         /*Top to Bottom*/
-  align-items: center;            /*Items align at the vertical center of the container.*/
+  flex-direction: column;        
+  align-items: center;           
   justify-content: center;
 
-        /* top right  bottom  left*/  
+
   margin: 10px  0   0    0;
   
   font-family: 'Source Sans Pro', sans-serif;
@@ -84,16 +80,12 @@
   font-size: 30px;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
-  /* top right  bottom  left*/
-    /* margin: 0px 0px 30px 00px; */
+
 }
-
-
 
 
 .fa.icone:hover{
   color:#68b1e9
-  /* color:#ff0000 */
 }
 
 ul li {
@@ -105,7 +97,6 @@ ul li {
   flex:1;
   font-size: 30px;
   opacity: 0.2;
-  /*ease, ease-out, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) (e.g. cubic-bezier(0.5, 0.2, 0.3, 1.0))*/
   animation: anima 1.5s ease-out infinite;
   position: absolute;
   left: -1.5rem;
@@ -120,8 +111,8 @@ ul li {
 
 
 .change {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  -ms-transform: rotate(180deg); 
+  -webkit-transform: rotate(180deg); 
   transform: rotate(180deg);
   transition-duration: 0.5s;
 }
@@ -141,10 +132,6 @@ ul li {
 
   }
   .nav {
-    /* flex: 1; */
-    /* flex-direction: column; */
-    /* color: white; */
-    /* justify-content: center; */
     align-items: flex-end;
     font-size: 20px;
   }

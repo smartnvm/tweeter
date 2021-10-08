@@ -17,10 +17,6 @@
   color: red;
 
 }
-/* .button, .counter {
-  font-family: 'San Pro', sans-serif;
-  margin-top: 35px;
-} */
 
 #tweeter-text {
   display: flex;
@@ -59,13 +55,12 @@ textarea {
   }
   
 
-  /* Responsive design for desktops */
+/* Responsive design for desktops */
 @media (min-width: 1024px) {
   
   .tweet-container {
     top:200px;
     width: 65vw;
-    /* height: 50vw; */
     float: right;
     position:relative;
     margin-top: 20px;

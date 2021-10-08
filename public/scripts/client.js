@@ -4,22 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-
-// $(document).ready(() => {
-
-
-// })
-
-
-//short hand for ^
-
 $(() => {
 
+  //initialize the form 
   showForm();
-  // $('#tweeter-text').on('keypress keydown keyup change', function (e) {
-
-
+ 
+  //auto size form textarea 
   $('#tweeter-text').on('input', function (e) {
     validateTextArea(e)
   
@@ -29,6 +19,7 @@ $(() => {
 
   })
 
+  //fetch tweet from server
   fetchTweets();
 
   const $form = $("#new-tweet-form");
@@ -38,11 +29,9 @@ $(() => {
     let chars = $('#tweeter-text').val().length
 
     if (!validateForm(chars)) return
-
+    
     const serializedData = $(this).serialize();
-
     $.post("/tweets", serializedData, (response) => {
-      //onsole.log(response)
       fetchTweets()
     })
     console.log('form was submitted, reset text area');
@@ -59,8 +48,7 @@ const showForm = () => {
   $('#maxlim').hide();
   $('#minlim').hide()
   $('#newTweet').hide();
-  // $('header').hide();
-
+  
   let show = true
   $('#showForm').click(function () {
     $(this).toggleClass('change');
@@ -71,23 +59,16 @@ const showForm = () => {
       $('#newTweet').slideUp();
       show = true
     }
-    // $('header').fadeIn();
-
   })
-
-
-
-
 }
+
+
 const validateForm = (chars) => {
-  // let key
-  // key = String.fromCharCode(e.keyCode);
 
   if (chars === 0) {
     $('#maxlim').hide()
     $('.errmsg').show();
     $('#minlim').show()
-    $(this).parent("form").children("div").children("output").removeClass("red");
     validate = false
 
   }
@@ -96,18 +77,9 @@ const validateForm = (chars) => {
 }
 
 
-const autoSize = function (me) {
-
-  me.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-  me.style.height = "auto";
-  me.style.height = (this.scrollHeight) + "px";
-
-}
 
 const validateTextArea = (e) => {
-  // let key
-  // key = String.fromCharCode(e.keyCode);
-
+  
   let chars = $('#tweeter-text').val().length
 
   //update character count
@@ -117,7 +89,6 @@ const validateTextArea = (e) => {
   if ((e.keyCode == 8) || (e.keyCode == 46)) {
     chars++
   }
-  // e.preventDefault();
 
   if (chars > 140) {
     $('#minlim').hide();
@@ -161,66 +132,14 @@ const generateTweets = (tweets) => {
   }
 }
 
-
+//escape function to mitigate against XSS
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-
-// const safeHTML = `<p>${escape(textFromUser)}</p>`;
-
 const createTweet = (tweet) => {
-
-  // const $tweet = $('<article>').addClass('tweet')
-
-  // const $tweetHeader = $('<header>')
-
-
-  // const $userProfile = $('<div>').addClass('profile')
-
-  // const $avatar = $("<img>").attr({
-  //   "src": tweet.user.avatars,
-  //   "alt": 'avatar'
-  // });
-
-  // const $name = $("<span>").text(tweet.user.name)
-  // $userProfile.append($avatar, $name)
-
-  // const $handle = $("<div>").addClass('text-muted').text(tweet.user.handle)
-
-  // $tweetHeader.append($userProfile, $handle)
-
-
-  // const $tweetBody = $("<div>").addClass('body').text(tweet.content.text)
-
-  // const $tweetFooter = $('<footer>')
-
-  // const $footerTime = $("<span>").addClass('tweetage').text(timeago.format(tweet.created_at))
-
-  // const $tweetReactions = $("<div>").addClass('reactions')
-
-  // const $flag = $("<i>").addClass('fa fa-xs fa-flag')
-  // const $retweet = $("<i>").addClass('fa fa-xs fa-retweet')
-  // const $like = $("<i>").addClass('fa fa-xs fa-heart')
-
-  // $tweetReactions.append($flag, $retweet, $like)
-
-
-  // $tweetFooter.append($footerTime, $tweetReactions)
-
-  // // const $body = $("<h2>").text(tweet.content.text)
-  // // const $timestamp = time(tweet.created_at)
-  // // const $dateCreated = $("<h1>").text($timestamp)
-
-  // // $tweet.append($avatar, $name, $handle, $body, $dateCreated)
-  // $tweet.append($tweetHeader, $tweetBody, $tweetFooter)
-
-
-
-
-
   const $tweet = $(`
   <article class="tweet">
     <header> 
@@ -249,27 +168,3 @@ const createTweet = (tweet) => {
 }
 
 
-
-
-
-  // const $form = $("#new-tweet-form");
-  // $form.on("submit", function (event) {
-
-  //   $.ajax({
-  //     url: "/tweets",
-  //     method: "POST",
-  //     data: $(this).serialize()
-  //   })
-  //     .then((result) => {
-  //       console.log(result, "tweet sent!")
-  //     });
-
-  //   $.ajax({
-  //     url: "/tweets",
-  //     method: "GET"
-  //   })
-  //     .then((result) => {
-  //       console.log('GET result:', result)
-  //       generateTweets(result);
-  //     });
-  // })

@@ -4,15 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
 $(() => {
 
   //initialize the form 
   showForm();
- 
+
   //auto size form textarea 
   $('#tweeter-text').on('input', function (e) {
-    validateTextArea(e)
-  
+    //validateTextArea(e)
+    updateCounter(e)
+
     this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
     this.style.height = "auto";
     this.style.height = (this.scrollHeight) + "px";
@@ -28,15 +30,17 @@ $(() => {
 
     let chars = $('#tweeter-text').val().length
 
+
     if (!validateForm(chars)) return
-    
+
     const serializedData = $(this).serialize();
     $.post("/tweets", serializedData, (response) => {
       fetchTweets()
     })
-    console.log('form was submitted, reset text area');
-
+    //form was submitted, reset text area and counter
     $('#tweeter-text').val('')
+    $('#counter').text(140);
+
   })
 
 })
@@ -48,7 +52,7 @@ const showForm = () => {
   $('#maxlim').hide();
   $('#minlim').hide()
   $('#newTweet').hide();
-  
+
   let show = true
   $('#showForm').click(function () {
     $(this).toggleClass('change');
@@ -62,24 +66,9 @@ const showForm = () => {
   })
 }
 
+const updateCounter = (e) => {
+  $('.errmsg').hide();
 
-const validateForm = (chars) => {
-
-  if (chars === 0) {
-    $('#maxlim').hide()
-    $('.errmsg').show();
-    $('#minlim').show()
-    validate = false
-
-  }
-  (chars > 140) ? validate = false : validate = true
-  return validate
-}
-
-
-
-const validateTextArea = (e) => {
-  
   let chars = $('#tweeter-text').val().length
 
   //update character count
@@ -89,6 +78,36 @@ const validateTextArea = (e) => {
   if ((e.keyCode == 8) || (e.keyCode == 46)) {
     chars++
   }
+  if (chars > 140) {
+    $('output').addClass("red")
+    validate = false
+  } else {
+    $('output').removeClass("red");
+  }
+}
+
+const validateForm = (chars) => {
+  if (chars > 140) {
+    $('#minlim').hide();
+    $('.errmsg').show();
+    $('#maxlim').show();
+    $('output').addClass("red")
+    validate = false
+  } else if (chars === 0) {
+    $('#maxlim').hide()
+    $('.errmsg').show();
+    $('#minlim').show()
+    validate = false
+  } else {
+    $('.errmsg').hide();
+    $("output").removeClass("red");
+    validate = true
+  }
+
+  return validate
+}
+
+const validateTextArea = () => {
 
   if (chars > 140) {
     $('#minlim').hide();
@@ -166,5 +185,3 @@ const createTweet = (tweet) => {
     </article>`);
   return $tweet
 }
-
-

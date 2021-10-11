@@ -4,22 +4,21 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
 $(() => {
-
-  //initialize the form 
+  //initialize the form
   showForm();
 
-  //auto size form textarea 
-  $('#tweeter-text').on('input', function (e) {
-    //validateTextArea(e)
-    updateCounter(e)
+  //auto size form textarea
+  $("#tweeter-text").on("input", function (e) {
+    updateCounter(e);
 
-    this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+    this.setAttribute(
+      "style",
+      "height:" + this.scrollHeight + "px;overflow-y:hidden;"
+    );
     this.style.height = "auto";
-    this.style.height = (this.scrollHeight) + "px";
-
-  })
+    this.style.height = this.scrollHeight + "px";
+  });
 
   //fetch tweet from server
   fetchTweets();
@@ -28,100 +27,79 @@ $(() => {
   $form.on("submit", function (event) {
     event.preventDefault();
 
-    let chars = $('#tweeter-text').val().length
+    let chars = $("#tweeter-text").val().length;
 
-
-    if (!validateForm(chars)) return
+    if (!validateForm(chars)) return;
 
     const serializedData = $(this).serialize();
     $.post("/tweets", serializedData, (response) => {
-      fetchTweets()
-    })
+      fetchTweets();
+    });
     //form was submitted, reset text area and counter
-    $('#tweeter-text').val('')
-    $('#counter').text(140);
-
-  })
-
-})
-
+    $("#tweeter-text").val("");
+    $("#counter").text(140);
+  });
+});
 
 const showForm = () => {
+  $(".errmsg").hide();
+  $("#maxlim").hide();
+  $("#minlim").hide();
+  $("#newTweet").hide();
 
-  $('.errmsg').hide();
-  $('#maxlim').hide();
-  $('#minlim').hide()
-  $('#newTweet').hide();
-
-  let show = true
-  $('#showForm').click(function () {
-    $(this).toggleClass('change');
+  let show = true;
+  $("#showForm").click(function () {
+    $(this).toggleClass("change");
     if (show) {
-      show = false
-      $('#newTweet').slideDown();
+      show = false;
+      $("#newTweet").slideDown();
     } else {
-      $('#newTweet').slideUp();
-      show = true
+      $("#newTweet").slideUp();
+      show = true;
     }
-  })
-}
+  });
+};
 
 const updateCounter = (e) => {
-  $('.errmsg').hide();
+  $(".errmsg").hide();
 
-  let chars = $('#tweeter-text').val().length
+  let chars = $("#tweeter-text").val().length;
 
   //update character count
-  $('#counter').text(140 - chars);
+  $("#counter").text(140 - chars);
 
   //update counter if backspace or delete keys are pressed
-  if ((e.keyCode == 8) || (e.keyCode == 46)) {
-    chars++
+  if (e.keyCode == 8 || e.keyCode == 46) {
+    chars++;
   }
   if (chars > 140) {
-    $('output').addClass("red")
-    validate = false
+    $("output").addClass("red");
+    validate = false;
   } else {
-    $('output').removeClass("red");
+    $("output").removeClass("red");
   }
-}
+};
 
 const validateForm = (chars) => {
   if (chars > 140) {
-    $('#minlim').hide();
-    $('.errmsg').show();
-    $('#maxlim').show();
-    $('output').addClass("red")
-    validate = false
+    $("#minlim").hide();
+    $(".errmsg").show();
+    $("#maxlim").show();
+    $("output").addClass("red");
+    validate = false;
   } else if (chars === 0) {
-    $('#maxlim').hide()
-    $('.errmsg').show();
-    $('#minlim').show()
-    validate = false
+    $("#maxlim").hide();
+    $(".errmsg").show();
+    $("#minlim").show();
+    validate = false;
   } else {
-    $('.errmsg').hide();
+    $(".errmsg").hide();
     $("output").removeClass("red");
-    validate = true
+    validate = true;
   }
 
-  return validate
-}
-
-const validateTextArea = () => {
-
-  if (chars > 140) {
-    $('#minlim').hide();
-    $('.errmsg').show();
-    $('#maxlim').show();
-    $('output').addClass("red")
-    validate = false
-  } else {
-    $('.errmsg').hide();
-    $("output").removeClass("red");
-    validate = true
-  }
-  return validate
-}
+  return validate;
+};
 
 // making a get request to see tweets
 const fetchTweets = () => {
@@ -130,15 +108,13 @@ const fetchTweets = () => {
     method: "GET",
     dataType: "json",
     success: (tweet) => {
-      console.log('data:', tweet)
-      generateTweets(tweet)
+      generateTweets(tweet);
     },
     error: (err) => {
-      console.log(`there was an error: ${err}`)
-    }
-  })
-
-}
+      console.log(`there was an error: ${err}`);
+    },
+  });
+};
 const generateTweets = (tweets) => {
   // clear out blog-container
   const $tweetContainer = $(".tweet-container");
@@ -149,7 +125,7 @@ const generateTweets = (tweets) => {
     const $tweet = createTweet(tweet);
     $tweetContainer.prepend($tweet);
   }
-}
+};
 
 //escape function to mitigate against XSS
 const escape = function (str) {
@@ -183,5 +159,5 @@ const createTweet = (tweet) => {
       </footer>
 
     </article>`);
-  return $tweet
-}
+  return $tweet;
+};
